@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2b4c768fd7185cbc22f06fc71d754b7f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2b4c768fd7185cbc22f06fc71d754b7f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2b4c768fd7185cbc22f06fc71d754b7f = L.map(
+                "map_2b4c768fd7185cbc22f06fc71d754b7f",
+                {
+                    center: [19.0414, -98.2063],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_98abff0cba7d31ca933cbf97cd50d137 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_98abff0cba7d31ca933cbf97cd50d137.addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var marker_69a868994d0a748c3dba75eafb8994d7 = L.marker(
+                [19.8249, -97.3656],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_c1861396f6bcf71b23ad409b8f118251 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_69a868994d0a748c3dba75eafb8994d7.setIcon(icon_c1861396f6bcf71b23ad409b8f118251);
+        
+    
+        var popup_89d80cc121c004c0dd70a64e7d5be4fc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ef0658713ceda50217200445e0ef3dfe = $(`<div id="html_ef0658713ceda50217200445e0ef3dfe" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Teziutlán<br>         <b>Región:</b> Sierra Norte<br>         <b>Clima:</b> Templado húmedo<br>         <b>Temperatura promedio:</b> 16°C         </div>`)[0];
+                popup_89d80cc121c004c0dd70a64e7d5be4fc.setContent(html_ef0658713ceda50217200445e0ef3dfe);
+            
+        
+
+        marker_69a868994d0a748c3dba75eafb8994d7.bindPopup(popup_89d80cc121c004c0dd70a64e7d5be4fc)
+        ;
+
+        
+    
+    
+            marker_69a868994d0a748c3dba75eafb8994d7.bindTooltip(
+                `<div>
+                     Teziutlán (Templado húmedo, 16°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae75187c722988022a9d63513db66bdf = L.marker(
+                [19.0594, -98.2988],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_cc39b8476847056e61d5c80ef574af16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ae75187c722988022a9d63513db66bdf.setIcon(icon_cc39b8476847056e61d5c80ef574af16);
+        
+    
+        var popup_15849b2e803fcb039d32c0ab1ba589de = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d0a68b7d091aa75c529b5000b67db67d = $(`<div id="html_d0a68b7d091aa75c529b5000b67db67d" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Cholula<br>         <b>Región:</b> Angelópolis<br>         <b>Clima:</b> Templado subhúmedo<br>         <b>Temperatura promedio:</b> 18°C         </div>`)[0];
+                popup_15849b2e803fcb039d32c0ab1ba589de.setContent(html_d0a68b7d091aa75c529b5000b67db67d);
+            
+        
+
+        marker_ae75187c722988022a9d63513db66bdf.bindPopup(popup_15849b2e803fcb039d32c0ab1ba589de)
+        ;
+
+        
+    
+    
+            marker_ae75187c722988022a9d63513db66bdf.bindTooltip(
+                `<div>
+                     Cholula (Templado subhúmedo, 18°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59dd9b5e65af508da478c12e73f37001 = L.marker(
+                [19.0414, -98.2063],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_f636b8f2ac6fe3944c0ce3badaae2401 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_59dd9b5e65af508da478c12e73f37001.setIcon(icon_f636b8f2ac6fe3944c0ce3badaae2401);
+        
+    
+        var popup_4a53e395457bef72313503ee3eb79fe5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98d75b7c32c50305d9387793e95accf2 = $(`<div id="html_98d75b7c32c50305d9387793e95accf2" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Puebla<br>         <b>Región:</b> Angelópolis<br>         <b>Clima:</b> Templado subhúmedo<br>         <b>Temperatura promedio:</b> 17°C         </div>`)[0];
+                popup_4a53e395457bef72313503ee3eb79fe5.setContent(html_98d75b7c32c50305d9387793e95accf2);
+            
+        
+
+        marker_59dd9b5e65af508da478c12e73f37001.bindPopup(popup_4a53e395457bef72313503ee3eb79fe5)
+        ;
+
+        
+    
+    
+            marker_59dd9b5e65af508da478c12e73f37001.bindTooltip(
+                `<div>
+                     Puebla (Templado subhúmedo, 17°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ad8aca8c37864f6ffa76a7bc8fff531a = L.marker(
+                [18.9141, -98.4293],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_99e18b66e249c0a9bcc1bd93beac14c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ad8aca8c37864f6ffa76a7bc8fff531a.setIcon(icon_99e18b66e249c0a9bcc1bd93beac14c6);
+        
+    
+        var popup_b095152d81a040d6923866cfbc1896bb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_195585316ee4bab02d4ce4c7cf208945 = $(`<div id="html_195585316ee4bab02d4ce4c7cf208945" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Atlixco<br>         <b>Región:</b> Valle de Atlixco<br>         <b>Clima:</b> Templado subhúmedo<br>         <b>Temperatura promedio:</b> 20°C         </div>`)[0];
+                popup_b095152d81a040d6923866cfbc1896bb.setContent(html_195585316ee4bab02d4ce4c7cf208945);
+            
+        
+
+        marker_ad8aca8c37864f6ffa76a7bc8fff531a.bindPopup(popup_b095152d81a040d6923866cfbc1896bb)
+        ;
+
+        
+    
+    
+            marker_ad8aca8c37864f6ffa76a7bc8fff531a.bindTooltip(
+                `<div>
+                     Atlixco (Templado subhúmedo, 20°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_929c436000a1d3d173d39cf77f6e212d = L.marker(
+                [20.1779, -97.6738],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_f31e7051ae76707f57be0259ccec441f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_929c436000a1d3d173d39cf77f6e212d.setIcon(icon_f31e7051ae76707f57be0259ccec441f);
+        
+    
+        var popup_7d34ab4c9eb7db48bc3505e0976be3e6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4e332ec6508686fac703380b3daff793 = $(`<div id="html_4e332ec6508686fac703380b3daff793" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Huauchinango<br>         <b>Región:</b> Sierra Norte<br>         <b>Clima:</b> Húmedo semicálido<br>         <b>Temperatura promedio:</b> 15°C         </div>`)[0];
+                popup_7d34ab4c9eb7db48bc3505e0976be3e6.setContent(html_4e332ec6508686fac703380b3daff793);
+            
+        
+
+        marker_929c436000a1d3d173d39cf77f6e212d.bindPopup(popup_7d34ab4c9eb7db48bc3505e0976be3e6)
+        ;
+
+        
+    
+    
+            marker_929c436000a1d3d173d39cf77f6e212d.bindTooltip(
+                `<div>
+                     Huauchinango (Húmedo semicálido, 15°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_86d520ad9270a95099fd6da5ad7ce5c1 = L.marker(
+                [18.6011, -98.4677],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_ac079e32e26b9784622c3fe152adc350 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_86d520ad9270a95099fd6da5ad7ce5c1.setIcon(icon_ac079e32e26b9784622c3fe152adc350);
+        
+    
+        var popup_f882c138f72970ff6a6331ae4bc46bfb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f5d035743097cfe2346ee076a11833a8 = $(`<div id="html_f5d035743097cfe2346ee076a11833a8" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Izúcar de Matamoros<br>         <b>Región:</b> Mixteca<br>         <b>Clima:</b> Cálido seco<br>         <b>Temperatura promedio:</b> 25°C         </div>`)[0];
+                popup_f882c138f72970ff6a6331ae4bc46bfb.setContent(html_f5d035743097cfe2346ee076a11833a8);
+            
+        
+
+        marker_86d520ad9270a95099fd6da5ad7ce5c1.bindPopup(popup_f882c138f72970ff6a6331ae4bc46bfb)
+        ;
+
+        
+    
+    
+            marker_86d520ad9270a95099fd6da5ad7ce5c1.bindTooltip(
+                `<div>
+                     Izúcar de Matamoros (Cálido seco, 25°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bcbf90d1ba9dce7a09fd68fa0f84dcf8 = L.marker(
+                [19.2815, -98.4388],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_c236ccefc35f71a47f9551c3bb376345 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_bcbf90d1ba9dce7a09fd68fa0f84dcf8.setIcon(icon_c236ccefc35f71a47f9551c3bb376345);
+        
+    
+        var popup_427531facaad883d91cd0f2cf06f4904 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2de794a22190234436f453c05f757720 = $(`<div id="html_2de794a22190234436f453c05f757720" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> San Martín Texmelucan<br>         <b>Región:</b> Valle de Serdán<br>         <b>Clima:</b> Templado subhúmedo<br>         <b>Temperatura promedio:</b> 17°C         </div>`)[0];
+                popup_427531facaad883d91cd0f2cf06f4904.setContent(html_2de794a22190234436f453c05f757720);
+            
+        
+
+        marker_bcbf90d1ba9dce7a09fd68fa0f84dcf8.bindPopup(popup_427531facaad883d91cd0f2cf06f4904)
+        ;
+
+        
+    
+    
+            marker_bcbf90d1ba9dce7a09fd68fa0f84dcf8.bindTooltip(
+                `<div>
+                     San Martín Texmelucan (Templado subhúmedo, 17°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c2b3ab538550d3d7865faa315f5a1c96 = L.marker(
+                [19.0436, -98.2972],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_393e96fb35daa8dbc33c84db39e63a96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c2b3ab538550d3d7865faa315f5a1c96.setIcon(icon_393e96fb35daa8dbc33c84db39e63a96);
+        
+    
+        var popup_a0ae62114c38ab8df33e0b568fe298c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_55364bbad51e053b85ce8dc76c331bd5 = $(`<div id="html_55364bbad51e053b85ce8dc76c331bd5" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> San Andrés Cholula<br>         <b>Región:</b> Angelópolis<br>         <b>Clima:</b> Templado subhúmedo<br>         <b>Temperatura promedio:</b> 18°C         </div>`)[0];
+                popup_a0ae62114c38ab8df33e0b568fe298c8.setContent(html_55364bbad51e053b85ce8dc76c331bd5);
+            
+        
+
+        marker_c2b3ab538550d3d7865faa315f5a1c96.bindPopup(popup_a0ae62114c38ab8df33e0b568fe298c8)
+        ;
+
+        
+    
+    
+            marker_c2b3ab538550d3d7865faa315f5a1c96.bindTooltip(
+                `<div>
+                     San Andrés Cholula (Templado subhúmedo, 18°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c718bdfcf6f9b51e77cf612bd40fc33a = L.marker(
+                [19.0378, -98.0381],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_25cc43c37fe013f0aa9aab8e4403000d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c718bdfcf6f9b51e77cf612bd40fc33a.setIcon(icon_25cc43c37fe013f0aa9aab8e4403000d);
+        
+    
+        var popup_4cc86cc9bee09e70a6c915d4fe66daf7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a8095e9d19256af00879b5a37393aab = $(`<div id="html_7a8095e9d19256af00879b5a37393aab" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Amozoc<br>         <b>Región:</b> Angelópolis<br>         <b>Clima:</b> Templado subhúmedo<br>         <b>Temperatura promedio:</b> 17°C         </div>`)[0];
+                popup_4cc86cc9bee09e70a6c915d4fe66daf7.setContent(html_7a8095e9d19256af00879b5a37393aab);
+            
+        
+
+        marker_c718bdfcf6f9b51e77cf612bd40fc33a.bindPopup(popup_4cc86cc9bee09e70a6c915d4fe66daf7)
+        ;
+
+        
+    
+    
+            marker_c718bdfcf6f9b51e77cf612bd40fc33a.bindTooltip(
+                `<div>
+                     Amozoc (Templado subhúmedo, 17°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3dc8c25af4bd28fb7b9b5fe2466b6f70 = L.marker(
+                [20.0175, -97.5181],
+                {}
+            ).addTo(map_2b4c768fd7185cbc22f06fc71d754b7f);
+        
+    
+            var icon_574e3fb06913934a6586054e522b4fab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_3dc8c25af4bd28fb7b9b5fe2466b6f70.setIcon(icon_574e3fb06913934a6586054e522b4fab);
+        
+    
+        var popup_fc87a7fde7290ef2369e10e2eae40283 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cc280242517ad7279f9e700f970c63d6 = $(`<div id="html_cc280242517ad7279f9e700f970c63d6" style="width: 100.0%; height: 100.0%;">         <b>Municipio:</b> Cuetzalan del Progreso<br>         <b>Región:</b> Sierra Norte<br>         <b>Clima:</b> Húmedo semicálido<br>         <b>Temperatura promedio:</b> 18°C         </div>`)[0];
+                popup_fc87a7fde7290ef2369e10e2eae40283.setContent(html_cc280242517ad7279f9e700f970c63d6);
+            
+        
+
+        marker_3dc8c25af4bd28fb7b9b5fe2466b6f70.bindPopup(popup_fc87a7fde7290ef2369e10e2eae40283)
+        ;
+
+        
+    
+    
+            marker_3dc8c25af4bd28fb7b9b5fe2466b6f70.bindTooltip(
+                `<div>
+                     Cuetzalan del Progreso (Húmedo semicálido, 18°C)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
