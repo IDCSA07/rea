@@ -5,87 +5,106 @@ import textwrap
 
 def conectar_bd():
     try:
-        conexion = mysql.connector.connect(
+        return mysql.connector.connect(
             host="localhost",
             user="root",
             password="Ccrj1108231407&",
             database="sistema_login"
         )
-        return conexion
     except mysql.connector.Error:
         return None
 
-def editar_campo(id_usuario, cultivo, campo, indice):
-    nuevo_valor = simpledialog.askstring("Editar", f"Nuevo valor para {campo}:", initialvalue=cultivo[indice])
-    if nuevo_valor:
-        conexion = conectar_bd()
-        cursor = conexion.cursor()
-        cursor.execute(f"UPDATE cult_personalizado SET {campo}=%s WHERE id_usuario=%s AND nombre_cult=%s", 
-                       (nuevo_valor, id_usuario, cultivo[0]))
-        conexion.commit()
-        conexion.close()
-        messagebox.showinfo("Éxito", f"{campo} actualizado correctamente.")
-        agregar_cultivos(frame_global, id_usuario)
-
-def editar_todo(id_usuario, cultivo):
-    campos = ["nombre_cult", "tipo_cult", "precio_estimado", "ubicacion", "descripcion"]
-    nuevos_valores = []
-    for i, campo in enumerate(campos):
-        valor = simpledialog.askstring("Editar", f"Nuevo valor para {campo}:", initialvalue=cultivo[i])
-        if valor is None:
-            return  # Si cancela, no se actualiza nada
-        nuevos_valores.append(valor)
-    
+def actualizar_cultivo(id_usuario, columna, nuevo_valor, nombre_cult):
     conexion = conectar_bd()
-    cursor = conexion.cursor()
-    cursor.execute("""
-        UPDATE cult_personalizado 
-        SET nombre_cult=%s, tipo_cult=%s, precio_estimado=%s, ubicacion=%s, descripcion=%s
-        WHERE id_usuario=%s AND nombre_cult=%s
-    """, (*nuevos_valores, id_usuario, cultivo[0]))
-    conexion.commit()
-    conexion.close()
-    messagebox.showinfo("Éxito", "Cultivo actualizado correctamente.")
-    agregar_cultivos(frame_global, id_usuario)
-
-def borrar_cultivo(id_usuario, cultivo):
-    confirmacion = messagebox.askyesno("Eliminar Cultivo", f"¿Seguro que quieres eliminar {cultivo[0]}?")
-    if confirmacion:
-        conexion = conectar_bd()
+    if conexion:
         cursor = conexion.cursor()
-        cursor.execute("DELETE FROM cult_personalizado WHERE id_usuario=%s AND nombre_cult=%s", (id_usuario, cultivo[0]))
-        conexion.commit()
-        conexion.close()
-        messagebox.showinfo("Éxito", "Cultivo eliminado correctamente.")
+        try:
+            consulta = f"UPDATE cult_personalizado SET {columna} = %s WHERE id_usuario = %s AND nombre_cult = %s"
+            cursor.execute(consulta, (nuevo_valor, id_usuario, nombre_cult))
+            conexion.commit()
+            messagebox.showinfo("Éxito", "Cultivo actualizado correctamente.")
+        except mysql.connector.Error as e:
+            messagebox.showerror("Error", f"No se pudo actualizar el cultivo: {e}")
+        finally:
+            conexion.close()
         agregar_cultivos(frame_global, id_usuario)
 
-def menu_contextual(event, id_usuario):
+def eliminar_cultivo(id_usuario, nombre_cult):
+    if messagebox.askyesno("Eliminar", f"¿Seguro que deseas eliminar el cultivo '{nombre_cult}'?"):
+        conexion = conectar_bd()
+        if conexion:
+            cursor = conexion.cursor()
+            try:
+                cursor.execute("DELETE FROM cult_personalizado WHERE id_usuario = %s AND nombre_cult = %s", (id_usuario, nombre_cult))
+                conexion.commit()
+                messagebox.showinfo("Éxito", "Cultivo eliminado correctamente.")
+            except mysql.connector.Error as e:
+                messagebox.showerror("Error", f"No se pudo eliminar el cultivo: {e}")
+            finally:
+                conexion.close()
+            agregar_cultivos(frame_global, id_usuario)
+
+def editar_celda(event, id_usuario):
+    item = tabla.identify_row(event.y)
+    column_id = tabla.identify_column(event.x)
+    
+    if item:
+        col_index = int(column_id[1:]) - 1
+        columnas = ["nombre_cult", "tipo_cult", "precio_estimado", "ubicacion", "descripcion"]
+        
+        if col_index < len(columnas):
+            columna = columnas[col_index]
+            valores = tabla.item(item, "values")
+            nombre_cult = valores[0]
+            valor_actual = valores[col_index]
+            
+            nuevo_valor = simpledialog.askstring("Editar", f"Nuevo valor para {columna}:", initialvalue=valor_actual)
+            if nuevo_valor is not None:
+                actualizar_cultivo(id_usuario, columna, nuevo_valor, nombre_cult)
+
+def mostrar_menu(event, id_usuario):
     item = tabla.identify_row(event.y)
     if item:
-        cultivo = tabla.item(item, "values")
-        menu = Menu(frame_global, tearoff=0)
-        
-        columnas = ["nombre_cult", "tipo_cult", "precio_estimado", "ubicacion", "descripcion"]
-        for i, columna in enumerate(columnas):
-            menu.add_command(label=f"Editar {columna}", command=lambda i=i: editar_campo(id_usuario, cultivo, columnas[i], i))
-        
-        menu.add_separator()
-        menu.add_command(label="Editar Todo", command=lambda: editar_todo(id_usuario, cultivo))
-        menu.add_command(label="Eliminar", command=lambda: borrar_cultivo(id_usuario, cultivo))
-        menu.post(event.x_root, event.y_root)
+        global evento_guardado
+        evento_guardado = event
+        menu_contextual.post(event.x_root, event.y_root)
+
+def agregar_cultivo(id_usuario):
+    campos = ["nombre_cult", "tipo_cult", "precio_estimado", "ubicacion", "descripcion"]
+    valores = []
+    for campo in campos:
+        valor = simpledialog.askstring("Agregar Cultivo", f"Ingrese {campo}:")
+        if valor is None:
+            return
+        valores.append(valor)
+    
+    conexion = conectar_bd()
+    if conexion:
+        cursor = conexion.cursor()
+        try:
+            cursor.execute("""
+                INSERT INTO cult_personalizado (id_usuario, nombre_cult, tipo_cult, precio_estimado, ubicacion, descripcion)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (id_usuario, *valores))
+            conexion.commit()
+            messagebox.showinfo("Éxito", "Cultivo agregado correctamente.")
+        except mysql.connector.Error as e:
+            messagebox.showerror("Error", f"No se pudo agregar el cultivo: {e}")
+        finally:
+            conexion.close()
+        agregar_cultivos(frame_global, id_usuario)
 
 def agregar_cultivos(frame, id_usuario):
-    global frame_global, tabla
+    global frame_global, tabla, menu_contextual
     frame_global = frame
     
     for widget in frame.winfo_children():
         widget.destroy()
     
-    frame.config(bg="#1E1E1E")
-    Label(frame, text="🌱 Cultivos Disponibles 🌱", bg="#1E1E1E", fg="white", font=("Arial", 22, "bold")).pack(pady=15)
-    Label(frame, text="Consulta los cultivos disponibles en Puebla.", bg="#1E1E1E", fg="#A0A0A0", font=("Arial", 14)).pack(pady=5)
+    Label(frame, text="🌱 Cultivos Disponibles 🌱", font=("Arial", 22, "bold")).pack(pady=15)
+    Label(frame, text="Consulta los cultivos disponibles en Puebla.", font=("Arial", 14)).pack(pady=5)
     
-    tabla_frame = Frame(frame, bg="#1E1E1E")
+    tabla_frame = Frame(frame)
     tabla_frame.pack(pady=10, padx=20, fill=BOTH, expand=True)
     
     columnas = ("Nombre", "Tipo", "Precio (MXN/kg)", "Ubicación", "Descripción")
@@ -94,14 +113,7 @@ def agregar_cultivos(frame, id_usuario):
     for col in columnas:
         tabla.heading(col, text=col)
     
-    tabla.column("Nombre", width=150)
-    tabla.column("Tipo", width=120)
-    tabla.column("Precio (MXN/kg)", width=130)
-    tabla.column("Ubicación", width=180)
-    tabla.column("Descripción", width=300)
-    
     tabla.pack(fill=BOTH, expand=True)
-    tabla.bind("<Button-3>", lambda event: menu_contextual(event, id_usuario))
     
     try:
         conexion = conectar_bd()
@@ -115,5 +127,10 @@ def agregar_cultivos(frame, id_usuario):
     except mysql.connector.Error as e:
         messagebox.showerror("Error", f"No se pudieron cargar los cultivos: {e}")
     
-    boton_agregar = Button(frame, text="Agregar Cultivo", bg="#008CBA", fg="white", font=("Arial", 14, "bold"), command=lambda: messagebox.showinfo("Agregar", "Función en desarrollo."))
-    boton_agregar.pack(pady=10)
+    menu_contextual = Menu(tabla, tearoff=0)
+    menu_contextual.add_command(label="Editar", command=lambda: editar_celda(evento_guardado, id_usuario))
+    menu_contextual.add_command(label="Eliminar", command=lambda: eliminar_cultivo(id_usuario, tabla.item(tabla.selection())['values'][0]))
+    
+    tabla.bind("<Button-3>", lambda event: mostrar_menu(event, id_usuario))
+    
+    Button(frame, text="Agregar Cultivo", command=lambda: agregar_cultivo(id_usuario)).pack(pady=10)
