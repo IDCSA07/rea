@@ -4,7 +4,7 @@ from fpdf import FPDF
 import os
 
 # Función para generar un PDF
-def generar_pdf(dia, mes, año, titulo, descripcion):
+def generar_pdf(titulo, descripcion):
     carpeta_reportes = "reportes_generados"
     if not os.path.exists(carpeta_reportes):
         os.makedirs(carpeta_reportes)

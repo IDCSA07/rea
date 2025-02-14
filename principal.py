@@ -7,10 +7,11 @@ from agregar_cultivos import agregar_cultivos
 from perfil_usuario import mostrar_perfil
 
 # Función para manejar navegación
-def cambiar_pagina(funcion):
+def cambiar_pagina(funcion, *args):
     for widget in cuerpo_principal.winfo_children():
         widget.destroy()  # Limpia la sección principal
-    funcion(cuerpo_principal)
+    funcion(cuerpo_principal, *args)  # Pasa los argumentos adicionales
+ # Limpia la sección principal
 
 # Configuración del menú y páginas
 def crear_ventana_menu(id_usuario):
@@ -47,15 +48,15 @@ def crear_ventana_menu(id_usuario):
     menu_cultivos = Menu(menu_bar, tearoff=0, bg="#181818", fg="white", activebackground="#E50914")
     menu_cultivos.add_command(label="Mapa", command=lambda: cambiar_pagina(mostrar_mapa))
     menu_cultivos.add_command(label="Cultivos", command=lambda: cambiar_pagina(mostrar_cultivos))
-    menu_cultivos.add_command(label="Agregar Cultivos", command=lambda: cambiar_pagina(agregar_cultivos))
+    menu_cultivos.add_command(label="Agregar Cultivos", command=lambda: cambiar_pagina(agregar_cultivos,id_usuario))
     menu_bar.add_cascade(label="Cultivos", menu=menu_cultivos)
 
     menu_reportes = Menu(menu_bar, tearoff=0, bg="#181818", fg="white", activebackground="#E50914")
-    menu_reportes.add_command(label="Reportes", command=lambda: cambiar_pagina(mostrar_reportes))
+    menu_reportes.add_command(label="Reportes", command=lambda: cambiar_pagina(mostrar_reportes, id_usuario))
     menu_bar.add_cascade(label="Reportes", menu=menu_reportes)
 
     menu_perfil = Menu(menu_bar, tearoff=0, bg="#181818", fg="white", activebackground="#E50914")
-    menu_perfil.add_command(label="Ver Mi Perfil", command=lambda: cambiar_pagina(mostrar_perfil))
+    menu_perfil.add_command(label="Ver Mi Perfil", command=lambda: cambiar_pagina(mostrar_perfil, id_usuario))
     menu_bar.add_cascade(label="Perfil", menu=menu_perfil)
 
 
