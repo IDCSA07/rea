@@ -79,7 +79,7 @@ def parcelas(frame, id_usuario):
     tabla_frame = Frame(parcelas_frame)
     tabla_frame.pack(pady=10, padx=10, fill=BOTH, expand=True)
     
-    columnas = ("Nombre", "Ubicación", "Tamaño", "Fertilidad")
+    columnas = ("Nombre", "Ubicación", "Tamaño(m²)", "Fertilidad")
     tabla = ttk.Treeview(tabla_frame, columns=columnas, show="headings")
     
     for col in columnas:
