@@ -101,8 +101,8 @@ def agregar_cultivos(frame, id_usuario):
     for widget in frame.winfo_children():
         widget.destroy()
     
-    Label(frame, text="🌱 Cultivos Disponibles 🌱", font=("Arial", 22, "bold")).pack(pady=15)
-    Label(frame, text="Consulta los cultivos disponibles en Puebla.", font=("Arial", 14)).pack(pady=5)
+    Label(frame, text="🌱 Cultivos Agregados 🌱", font=("Arial", 22, "bold")).pack(pady=15)
+    Label(frame, text="Agrega tus cultivos personalizados.", font=("Arial", 14)).pack(pady=5)
     
     tabla_frame = Frame(frame)
     tabla_frame.pack(pady=10, padx=20, fill=BOTH, expand=True)
