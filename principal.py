@@ -14,6 +14,7 @@ from insumos import insumos
 from parcelas import parcelas
 from siembras import siembras
 from cosechas import cosechas
+
 # Función para conectarse a la base de datos y obtener el nombre del usuario
 def obtener_nombre_usuario(id_usuario):
     try:
@@ -115,7 +116,7 @@ def crear_ventana_menu(id_usuario):
 
 
     menu_produccion = Menu(menu_bar, tearoff=0, bg="#181818", fg="white", activebackground="#E50914")
-    menu_produccion.add_command(label="Insumos", command=lambda: cambiar_pagina(insumos))
+    menu_produccion.add_command(label="Insumos", command=lambda: cambiar_pagina(insumos, id_usuario))
     menu_produccion.add_command(label="Parcelas", command=lambda: cambiar_pagina(parcelas, id_usuario))
     menu_produccion.add_command(label="Siembras", command=lambda: cambiar_pagina(siembras))
     menu_produccion.add_command(label="Cosechas", command=lambda: cambiar_pagina(cosechas))
